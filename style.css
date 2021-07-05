@@ -1,5 +1,6 @@
-body{
-  background-color: #838383e3
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap");
+*{
+  font-family: "Nunito", sans-serif;
 }
 p{
   margin: 0;
@@ -7,6 +8,9 @@ p{
 }
 h1{
   text-align: center;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 2px;
 }
 .form{
   display: flex;
@@ -16,7 +20,7 @@ h1{
 .form input{
   background: none;
   border: none;
-  background-color: #00c3fffd;
+  box-shadow: #63636333 0px 2px 8px 0px;
   padding: 10px;
 }
 .form input{
@@ -25,7 +29,6 @@ h1{
 }
 .form button{
   padding: 11px;
-  border-left: #00ffb3 solid 1px;
   cursor: pointer;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -38,12 +41,12 @@ h1{
   list-style: none;
 }
 .results li{
-  background-color: #00c3fffd;
   margin-bottom: 10px;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color .4s ease-out;
+  box-shadow: #63636333 0px 2px 8px 0px;
 }
 .results li:hover{
   background-color: #00ffb3;
@@ -54,21 +57,46 @@ h1{
   float: right;
   min-width: 20px;
   border-radius: 5px;
+  padding: 1px 3px;
   margin-left: 10px;
 }
 .card{
-  width: 250px;
+  max-width: 350px;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   padding: 15px;
   border-radius: 5px;
-  background-color: #00ffb3;
-  border: 1px solid #00ffb3;
+  box-shadow: #63636333 0px 2px 8px 0px;
+}
+.city{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 .number{
   color: #fff;
   display: inline-block;
   margin: 0;
   padding: 2px 12px;
+  border-radius: 3px;
+}
+.number + span{
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.advice_box :first-child{
+  color: #00bf86;
+}
+.advice_box :first-child,
+.danger_box :first-child{
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.danger_box :first-child{
+  color: #e60000f2;
 }

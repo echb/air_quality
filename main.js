@@ -1,119 +1,3 @@
-// let citySlect
-// const token = 'aeba2b5b15cfe9e8706847e82e4a16a49f3af81d'
-
-
-// function selecCityOptions() {
-//   const selecCity = document.querySelector('#selecCity')
-//   selecCity.querySelectorAll('[data-value]').forEach((city) => {
-//     city.addEventListener('click', (e) => {
-//       citySlect = e.target.dataset.value
-//       airBring()
-//     })
-//   })
-// }
-// selecCityOptions()
-
-// function airBring() {
-//   fetch(`https://api.waqi.info/feed${citySlect}?token=${token}`)
-//     .then(response => response.json())
-//     .then((data) => {
-//       const dataToUse = data.data
-//       setData(dataToUse.aqi, dataToUse.city.name, dataToUse.time.s)
-//       setAdvice(dataToUse.aqi)
-//     })
-// }
-
-// function setData(a, b, c) {
-//   const airQuality = document.querySelector('.airQuality')
-//   airQuality.querySelector('p.aqi').textContent = a
-//   airQuality.querySelector('p.city').textContent = b
-//   airQuality.querySelector('p.time').textContent = c
-// }
-// function setAdvice(a) {
-//   const airQuality = document.querySelector('.airQuality')
-//   const aquiQuantity = airQuality.querySelector('p.aqi')
-//   const aquiAdvice = airQuality.querySelector('p.advice')
-//   const aquiDanger = airQuality.querySelector('p.danger')
-//   const dataStored = dataStorage()
-
-//   // ONE
-//   if (a <= 50) {
-//     aquiQuantity.style.color = dataStored.valueOne.color
-//     aquiQuantity.style.backgroundColor = dataStored.valueOne.bgColor
-//     aquiAdvice.textContent = dataStored.valueOne.advice
-//     aquiDanger.textContent = dataStored.valueOne.danger
-//     // TWO
-//   } else if (a <= 100) {
-//     aquiQuantity.style.color = dataStored.valueTwo.color
-//     aquiQuantity.style.backgroundColor = dataStored.valueTwo.bgColor
-//     aquiAdvice.textContent = dataStored.valueTwo.advice
-//     aquiDanger.textContent = dataStored.valueTwo.danger
-//     // THREE
-//   } else if (a <= 150) {
-//     aquiQuantity.style.color = dataStored.valueThree.color
-//     aquiQuantity.style.backgroundColor = dataStored.valueThree.bgColor
-//     aquiAdvice.textContent = dataStored.valueThree.advice
-//     aquiDanger.textContent = dataStored.valueThree.danger
-//     // FOUR
-//   } else if (a <= 200) {
-//     aquiQuantity.style.color = dataStored.valueFour.color
-//     aquiQuantity.style.backgroundColor = dataStored.valueFour.bgColor
-//     aquiAdvice.textContent = dataStored.valueFour.advice
-//     aquiDanger.textContent = dataStored.valueFour.danger
-//     // FIVE
-//   } else if (a <= 300) {
-//     aquiQuantity.style.color = dataStored.valueFive.color
-//     aquiQuantity.style.backgroundColor = dataStored.valueFive.bgColor
-//     aquiAdvice.textContent = dataStored.valueFive.advice
-//     aquiDanger.textContent = dataStored.valueFive.danger
-//     // SIX
-//   } else {
-//     aquiQuantity.style.color = dataStored.valueSix.color
-//     aquiQuantity.style.backgroundColor = dataStored.valueSix.bgColor
-//     aquiAdvice.textContent = dataStored.valueSix.advice
-//     aquiDanger.textContent = dataStored.valueSix.danger
-//   }
-// }
-// function dataStorage() {
-//   const dataValues = {
-//     valueOne: {
-//       bgColor: '#009966',
-//       advice: "Air quality is considered satisfactory, and air pollution poses little or no risk",
-//       danger: "None"
-//     },
-//     valueTwo: {
-//       color: '#000',
-//       bgColor: '#ffde33',
-//       advice: "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.",
-//       danger: "Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion."
-//     },
-//     valueThree: {
-//       color: '#000',
-//       bgColor: '#ff9933',
-//       advice: "Members of sensitive groups may experience health effects. The general public is not likely to be affected.",
-//       danger: "Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion."
-//     },
-//     valueFour: {
-//       bgColor: '#ffde33',
-//       advice: "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects",
-//       danger: "Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion"
-//     },
-//     valueFive: {
-//       bgColor: '#ffde33',
-//       advice: "Health warnings of emergency conditions. The entire population is more likely to be affected.",
-//       danger: "Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion."
-//     },
-//     valueSix: {
-//       bgColor: '#ffde33',
-//       advice: "Health alert: everyone may experience more serious health effects",
-//       danger: "Everyone should avoid all outdoor exertion"
-//     },
-//   }
-//   return dataValues
-// }
-// ---------------------------------
-// REFACTOR
-
 const qualityAirSearch = document.querySelector('.qualityAirSearch')
 const form = document.querySelector('.form')
 const results = document.querySelector('.results')
@@ -161,7 +45,6 @@ function aqiListShowAndHandle(i, li) {
   span.classList.add('aqi')
   let aqi = dataToFetch[i].aqi
   li.appendChild(span)
-  // console.log(dataToFetch[i]);
   const aquiQuantity2 = document.querySelectorAll('.aqi')
   setAdvice(aqi, aquiQuantity2[i])
 }
@@ -170,7 +53,6 @@ function setDataToCard() {
   const lis = results.querySelectorAll('li')
   lis.forEach(li => {
     li.addEventListener('click', (e) => {
-      console.log(e);
       let dataToSearchOnClick = e.target.getAttribute("data-url")
       let dataFetch
       fetch(`https://api.waqi.info/feed/${dataToSearchOnClick}/?token=${token}`)
@@ -246,7 +128,6 @@ function setAdvice(a, b) {
       aquiAdvice.textContent = dataStored.valueSix.advice
       aquiDanger.textContent = dataStored.valueSix.danger
     }
-
   } else {
     if (a <= 50) {
       b.style.backgroundColor = dataStored.valueOne.bgColor
